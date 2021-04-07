@@ -1,9 +1,13 @@
 ## Lot Tracking System
 
-**Overview**
+**Overview**<br/>
 A web application designed to simulate the operations a wafer processing plant. Users can register, login, and generate batches of "wafers" with a name, quantity, and id value. Wafers are stored in a FIFO queue where they can enter the system and process through 10 plant locations. A log is kept of all actions in the system and displayed to the user. 
 
-**Technologies used**
+<br/>
+<img src="https://github.com/JordanChow/LotTrackingSystem/blob/main/LotTrackingSystemDemo.gif"/>
+<br/>
+
+**Technologies used**<br/>
 Backend
 - ASP.NET Core (C#)
 - Entity Framework Core
@@ -16,7 +20,7 @@ Frontend
 - Angular CLI
 - Bootstrap
 
-**Setup**
+**Setup**<br/>
 In the terminal, navigate into:
 
 ~LotTrackingSystem/API (replace ~ with the correct file path)
