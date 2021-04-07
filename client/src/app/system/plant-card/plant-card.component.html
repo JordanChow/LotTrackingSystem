@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card mb-4 bg-light d-flex" style="width: 12rem;">
+    <div class="card-header" style="text-align: center;"><strong>Plant: {{plantFromParent.location}}</strong></div>
+    <div class="card-body p-2" style="min-height: 15vh;">
+      <h6 class="card-title">Supplier: <p style="display: inline" *ngIf="plantFromParent.lot != null && plantFromParent.lot.plantId == plantFromParent.location">
+        {{plantFromParent.lot.supplier}}</p></h6>
+
+      <h6 class="card-title">Wafers: <p style="display: inline" *ngIf="plantFromParent.lot != null && plantFromParent.lot.plantId == plantFromParent.location">
+        {{plantFromParent.lot.waferAmount}}</p></h6>
+
+      <h6 class="card-title">Lot Id: <p style="display: inline" *ngIf="plantFromParent.lot != null && plantFromParent.lot.plantId == plantFromParent.location">
+        {{plantFromParent.lot.userLot}}</p></h6>
+
+      <button class="btn btn-success btn-sm" [disabled] = "plantFromParent.disable == true || plantFromParent.lot == null || plantFromParent.lot.plantId == null"
+        [style.background-color] = "getColor()"
+        [style.border] = "getColor()"
+        (click)="process(plantFromParent); ">{{plantFromParent.state}}</button>
+    </div>
+  </div>
+</div>

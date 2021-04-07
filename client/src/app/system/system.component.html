@@ -1,0 +1,62 @@
+<h3>Create a lot</h3>
+
+<form [formGroup]="lotForm" (ngSubmit)="create();" autocomplete="off">
+    <div class="form-group">
+        <span style="text-align: right; float:left; margin-right: 30px; margin-top: 6px;">Supplier Name:</span>
+        <input style="width:200px;" 
+            [class.is-invalid]='lotForm.get("supplier").
+            errors && lotForm.get("supplier").touched'
+            type="text" 
+            class="form-control" 
+            formControlName='supplier'>
+            <div *ngIf="lotForm.get('supplier').hasError('required')" style="margin-left:140px;" class="invalid-feedback">Please enter a supplier</div>
+            <div *ngIf="lotForm.get('supplier').hasError('maxlength')" style="margin-left:140px;" class = "invalid-feedback">Supplier must be maximum 16 characters</div>
+
+    </div>
+
+    <div class="form-group">
+        <span style="text-align: right; float:left; margin-right: 30px; margin-top: 5px;">Wafer Amount:</span>
+        <input style="width:200px;"
+            [class.is-invalid]='lotForm.get("waferAmount").
+            errors && lotForm.get("waferAmount").touched' 
+            type="text" 
+            class="form-control" 
+            formControlName='waferAmount'>
+            <div *ngIf="lotForm.get('waferAmount').hasError('required')" style="margin-left:140px;" class="invalid-feedback">Please enter a quantiy of wafers</div>
+            <div *ngIf="lotForm.get('waferAmount').hasError('pattern')" style="margin-left:140px;" class="invalid-feedback">Please enter a valid number</div>
+            <div *ngIf="lotForm.get('waferAmount').hasError('maxlength')" style="margin-left:140px;" class = "invalid-feedback">Wafer must be maximum 4 digits</div>
+    </div>
+    <div class="form-group">
+        <span style="text-align: right; float:left; margin-right: 90px; margin-top: 6px;">Lot Id:</span>
+        <input style="width:200px;" 
+            [class.is-invalid]='lotForm.get("userLot").
+            errors && lotForm.get("userLot").touched' 
+            type="text" 
+            class="form-control mt-2" 
+            formControlName='userLot'>
+            <div *ngIf="lotForm.get('userLot').hasError('required')" style="margin-left:140px;" class="invalid-feedback">Please enter a Id for the lot</div>
+            <div *ngIf="lotForm.get('userLot').hasError('pattern')" style="margin-left:140px;" class="invalid-feedback">Please enter a valid number</div>
+            <div *ngIf="lotForm.get('userLot').hasError('maxlength')" style="margin-left:140px;" class = "invalid-feedback">Lot Id must be maximum 5 digits</div>
+    </div>
+
+    <div class="form-group text-center">
+        <button style="float:left;" class="btn btn-success" [disabled]="!lotForm.valid" type="submit">CREATE</button>
+    </div>
+</form>
+
+<button class="btn btn-danger"(click)="reset()" [disabled]="!resetButton">RESET</button>
+    
+<app-inventory [plants]="plants" (messageEvent)="recieveMessage($event)"></app-inventory>
+
+
+<div class="grid">
+    <div class="row">
+            <div class="col-sm-2" *ngFor="let plant of plants">
+                <app-plant-card *ngIf="plantsLoaded==true" [plantFromParent]="plant" (processLot) = "processMode($event)" (lotComplete) = "lastPlantFinished($event)"></app-plant-card>
+            </div>
+    </div>
+</div>
+
+<div class="log-container">
+    <app-log (logEvent)="recieveLog($event)"></app-log>
+</div>

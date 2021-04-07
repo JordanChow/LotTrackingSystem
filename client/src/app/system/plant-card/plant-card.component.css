@@ -1,0 +1,20 @@
+.card-header{
+    font-size: 18px;
+}
+
+/* .container{
+    position: relative;
+    bottom: 50%;
+} */
+
+.card-body{
+    height: 200px;
+}
+
+.btn{
+    position: relative;
+    width: 8rem;
+    top: 5px;
+    margin: 30px 22px;
+}
+

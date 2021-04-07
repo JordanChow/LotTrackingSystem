@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container">
+
+    <h1 class="navbar-brand mt-1">Lot Tracking System</h1>
+    
+    <div class="logout d-flex" style="margin-left: 350px;" *ngIf="(accountService.currentUser$ | async) as user">
+      <a class="navbar-brand text-light" style="margin-right: 100px;">Welcome {{user.username | titlecase}}</a>
+      <button class="btn btn-outline-success text-light" type="submit" (click)="logout()">Logout</button>
+    </div>
+
+    <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
+      autocomplete="off">
+      <input name="username" [(ngModel)]="model.username" class="form-control me-2 mr-2" type="text"
+        placeholder="Username">
+      <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
+        placeholder="Password">
+      <button class="btn btn-outline-success ml-2" type="submit">Login</button>
+    </form>
+
+  </div>
+</nav>
